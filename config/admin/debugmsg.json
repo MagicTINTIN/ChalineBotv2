@@ -1,0 +1,9 @@
+{
+    "init":{
+        "startInitMsg":"Starting Chaline...\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾",
+        "endInitMsg":"___________________\nChaline is ready"
+    },
+    "errors":{
+        "mainMsg":"📌 il y a un chat dans la matrice"
+    }
+}

@@ -1,47 +1,32 @@
-console.log("Starting Chaline...\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+const debugmsg = require("./config/admin/debugmsg.json")
+console.log(debugmsg.init.startInitMsg);
 
 // Import librairies
+
+// Import configurations
+const initcfg = require("./config/admin/init.json")
+
 const { importer } = require("./internals");
 importer("nothing");
 
-const { Client, GatewayIntentBits, Partials } = require('discord.js');
+const { Client, Partials } = require('discord.js');
 // Client creation and export
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildBans,
-        GatewayIntentBits.GuildEmojisAndStickers,
-        GatewayIntentBits.GuildIntegrations,
-        GatewayIntentBits.GuildWebhooks,
-        GatewayIntentBits.GuildInvites,
-        GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.GuildPresences,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildMessageReactions,
-        GatewayIntentBits.GuildMessageTyping,
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions,
-        GatewayIntentBits.DirectMessageTyping,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildScheduledEvents
-    ],
-    partials: [
-        'CHANNEL', // Required to receive DMs
-    ]
+    intents: initcfg.intents,
+    partials: initcfg.partials
 });
 exports.client = client;
 
 // when Chaline logged in Discord
 client.once('ready', () => {
-    console.log("___________________\nChaline is ready");
+    console.log(debugmsg.init.endInitMsg);
 });
 
 // Prevents bot from crash
 process.on('uncaughtException', function (err) {
     console.error(err);
 
-    logger.all("📌 Un chat m'a coupé la route, mais je suis indemne");
+    logger.all(debugmsg.errors.mainMsg);
 
     try {
         errorwide = err.stack
