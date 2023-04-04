@@ -1,3 +1,12 @@
+const importer = require("./tools/importer");
+
+const base = {
+    element: require("./discord/element")
+}
+exports.base = base;
+
 module.exports = {
-    importer: require("./importer")
+    base: base,
+    
+    importercount: require("./tools/importer"),
 }

@@ -1,13 +1,9 @@
-const debugmsg = require("./config/admin/debugmsg.json")
+const debugmsg = require("./config/admin/debugmsg.json");
 console.log(debugmsg.init.startInitMsg);
-
-// Import librairies
+let initialized = false;
 
 // Import configurations
 const initcfg = require("./config/admin/init.json")
-
-const { importer } = require("./internals");
-importer("nothing");
 
 const { Client, Partials } = require('discord.js');
 // Client creation and export
@@ -17,27 +13,32 @@ const client = new Client({
 });
 exports.client = client;
 
+// Import librairies
+const bot = require("./internals");
+bot.importercount(bot);
+
 // when Chaline logged in Discord
 client.once('ready', () => {
     console.log(debugmsg.init.endInitMsg);
+    initialized = true;
 });
 
 // Prevents bot from crash
 process.on('uncaughtException', function (err) {
     console.error(err);
 
-    logger.all(debugmsg.errors.mainMsg);
-
-    try {
-        errorwide = err.stack
-        messerror = errorwide.match(/(.{1,1800})/g);
-        for (const msgparterror of messerror) {
-            if (initialized)
+    console.log(debugmsg.errors.mainMsg);
+    if (initialized)
+        try {
+            logger.channel(debugmsg.errors.mainMsg);
+            errorwide = err.stack
+            messerror = errorwide.match(/(.{1,1800})/g);
+            for (const msgparterror of messerror) {
                 logger.channel("```diff\n-> " + msgparterror + "\n```");
+            }
+        } catch (error) {
+            console.error(error);
         }
-    } catch (error) {
-        console.error(error);
-    }
 });
 
 client.login(process.env.TOKEN);
