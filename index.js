@@ -21,6 +21,7 @@ bot.importercount(bot);
 client.once('ready', () => {
     console.log(debugmsg.init.endInitMsg);
     initialized = true;
+    //bot.msg.sendch("817527540154630144", "Hello world");
 });
 
 // Prevents bot from crash
@@ -28,7 +29,7 @@ process.on('uncaughtException', function (err) {
     console.error(err);
 
     console.log(debugmsg.errors.mainMsg);
-    if (initialized)
+    if (initialized && false)
         try {
             logger.channel(debugmsg.errors.mainMsg);
             errorwide = err.stack

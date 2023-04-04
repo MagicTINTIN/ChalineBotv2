@@ -7,6 +7,6 @@ exports.base = base;
 
 module.exports = {
     base: base,
-    
+    msg: require("./discord/msg"),
     importercount: require("./tools/importer"),
 }

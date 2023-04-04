@@ -1,5 +1,6 @@
 const { Embed, Attachment } = require("discord.js");
-const dscrdElem = require("./element");
+const { client } = require("../../index.js");
+const { base } = require("../index");
 
 module.exports = {
     /**
@@ -10,9 +11,9 @@ module.exports = {
         * @param {Embed[]} [embeds] embed to send
         * @param {Attachment[]} [attachments] attachment to send 
         */
-    sendch: function (channel, content, embed=null, attachment=[]) {
-        const { client } = require("../../index.js");
-        let chdest = (typeof(channel) == "string") ? dscrdElem.getchid(channel) : channel;
+    sendch: function (channel, content, embeds=null, attachments=null) {
+        
+        let chdest = (typeof(channel) == "string") ? base.element.getchid(channel) : channel;
         if (chdest == null) {
             console.log("Wrong channel ID");
             return 1;

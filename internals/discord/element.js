@@ -7,6 +7,6 @@ module.exports = {
         * @param {string} channelid channel to get by id
         */
     getchid: function (channelid) {
-        return client.channels.cache.get(botchannels.errorChannel)
+        return client.channels.cache.get(channelid)
     }
 };  
