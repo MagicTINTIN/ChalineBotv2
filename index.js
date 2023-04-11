@@ -21,7 +21,8 @@ bot.importercount(bot);
 client.once('ready', () => {
     console.log(debugmsg.init.endInitMsg);
     initialized = true;
-    //bot.msg.sendch("817527540154630144", "Hello world");
+    //bot.dscrd.msg.sendch("817527540154630144", "Hello world");
+    bot.log.all("INIT");
 });
 
 // Prevents bot from crash
