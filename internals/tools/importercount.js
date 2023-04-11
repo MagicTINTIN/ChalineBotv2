@@ -1,6 +1,10 @@
-
+/**
+        * Returns what have been imported
+        *
+        * @return {string} 
+        */
 const importercount = (arg) => {
-    console.log(`Imported ${Object.keys(arg).length} elements from importer : `, Object.keys(arg));
+    return `Imported ${Object.keys(arg).length} elements from importer : \n- ` + Object.keys(arg).join("\n- ");
 };
 
 module.exports = importercount;
