@@ -1,5 +1,3 @@
-const importer = require("./tools/importercount");
-
 const base = {
     element: require("./discord/element")
 }
@@ -7,6 +5,7 @@ exports.base = base;
 
 const dscrd = {
     msg: require("./discord/msg"),
+    interaction: require("./discord/interactions")
 }
 exports.dscrd = dscrd;
 

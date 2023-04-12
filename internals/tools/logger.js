@@ -22,7 +22,7 @@ module.exports = {
         * @param {string|string[]} tolog message to log
         * @param {boolean} blockcode to set message appears as a block code in discord (default: false)
         */
-    ch: function (tolog) {
+    ch: function (tolog, blockcode = false) {
         let strtolog = (typeof (tolog) == "string") ? tolog : tolog.join("\n");
         if (blockcode)
             dscrd.msg.sendch(debugmsg.debugch, "```" + strtolog + "```");
