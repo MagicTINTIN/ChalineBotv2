@@ -15,4 +15,6 @@ module.exports = {
     tests: require("./tests/print"),
     importercount: require("./tools/importercount"),
     log: require("./tools/logger"),
+    str: require("./tools/string"),
+    rdm: require("./tools/random")
 }
