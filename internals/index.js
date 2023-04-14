@@ -16,5 +16,6 @@ module.exports = {
     importercount: require("./tools/importercount"),
     log: require("./tools/logger"),
     str: require("./tools/string"),
-    rdm: require("./tools/random")
+    rdm: require("./tools/random"),
+    err: require("./tools/alert"),
 }

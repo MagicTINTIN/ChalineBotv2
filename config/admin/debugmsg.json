@@ -5,6 +5,9 @@
         "endInitMsg":"___________________\nChaline is ready"
     },
     "errors":{
+        "debug":"⚙️ | ",
+        "important":"❗ | ",
+        "warning":"⚠️ | ",
         "mainMsg":"📌 il y a un chat dans la matrice"
     }
 }
