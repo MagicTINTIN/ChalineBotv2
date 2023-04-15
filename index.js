@@ -33,9 +33,9 @@ process.on('uncaughtException', function (err) {
 // when Chaline logged in Discord
 client.once('ready', () => {
     initialized = true;
-    bot.init();
     bot.log.ch(debugmsg.init.startInitMsg, true, "**");
     bot.log.all(bot.importercount(bot), true)
+    bot.init();
     bot.log.all(debugmsg.init.endInitMsg, true, "**")
 });
 
