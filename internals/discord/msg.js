@@ -11,14 +11,14 @@ module.exports = {
         * @param {Embed[]} [embeds] embed to send
         * @param {Attachment[]} [attachments] attachment to send 
         */
-    sendch: function (channel, content, embeds=null, attachments=null) {
-        
-        let chdest = (typeof(channel) == "string") ? base.element.getchid(channel) : channel;
+    sendch: function (channel, content, embeds = null, attachments = null) {
+
+        let chdest = (typeof (channel) == "string") ? base.ch.get(channel) : channel;
         if (chdest == null) {
             console.log("Wrong channel ID");
             return 1;
         }
         if (content.length > 0 || embeds != null || attachments != null)
-        chdest.send({content:content, files: attachments, embeds:embeds})
+            chdest.send({ content: content, files: attachments, embeds: embeds })
     }
 };  

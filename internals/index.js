@@ -1,5 +1,6 @@
 const base = {
-    element: require("./discord/element")
+    gld: require("./discord/gldelement"),
+    ch: require("./discord/chelement")
 }
 exports.base = base;
 
@@ -17,5 +18,7 @@ module.exports = {
     log: require("./tools/logger"),
     str: require("./tools/string"),
     rdm: require("./tools/random"),
-    err: require("./tools/alert"),
+    alert: require("./tools/alert"),
+    file: require("./tools/file"),
+    init: require("./tools/init"),
 }

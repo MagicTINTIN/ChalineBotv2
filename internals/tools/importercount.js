@@ -3,8 +3,8 @@
         *
         * @return {string} 
         */
-const importercount = (arg) => {
-    return `Imported ${Object.keys(arg).length} elements from importer : \n- ` + Object.keys(arg).join("\n- ");
+function importercount(arg) {
+    return `Imported ${Object.keys(arg).length} elements from internals : \n- ` + Object.keys(arg).join("\n- ");
 };
 
 module.exports = importercount;

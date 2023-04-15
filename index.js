@@ -2,7 +2,7 @@ const debugmsg = require("./config/admin/debugmsg.json");
 console.log(debugmsg.init.startInitMsg);
 let initialized = false;
 // to enable all logs set to 0 to disable all set to 1
-const debugmode = 0;
+const debugmode = 1;
 
 // Import configurations
 const initcfg = require("./config/admin/init.json");
@@ -17,13 +17,13 @@ const client = new Client({
 exports.client = client;
 
 // Import librairies
-const errors = require("./internals/tools/alert")
+const alert = require("./internals/tools/alert")
 const bot = require("./internals");
 const { tests } = require("./internals");
 
 // Prevents bot from crash
 process.on('uncaughtException', function (err) {
-    errors.err(err, initialized);
+    alert.err(err, initialized);
 });
 
 
@@ -33,20 +33,21 @@ process.on('uncaughtException', function (err) {
 // when Chaline logged in Discord
 client.once('ready', () => {
     initialized = true;
+    bot.init();
     bot.log.all([debugmsg.init.startInitMsg, bot.importercount(bot), debugmsg.init.endInitMsg], true);
 });
 
 client.on('debug', async info => {
     if (debugmode != 1)
-        errors.debug(info, initialized);
+        alert.debug(info, initialized);
 });
 
 client.on('error', async error => {
-    errors.err(error, initialized);
+    alert.err(error, initialized);
 });
 
 client.on('warn', async warning => {
-    errors.warn(warning, initialized);
+    alert.warn(warning, initialized);
 });
 
 // triggered when bot joins a new server
