@@ -1,8 +1,8 @@
 {
     "debugch":"1095309180346306591",
     "init":{
-        "startInitMsg":"Starting Chaline...\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾",
-        "endInitMsg":"___________________\nChaline is ready"
+        "startInitMsg":"▶️ | Starting Chaline...\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾",
+        "endInitMsg":"___________________\n✅ | Chaline is ready"
     },
     "errors":{
         "debug":"⚙️ | ",

@@ -30,7 +30,7 @@ module.exports = {
 
             var guildCfgJSON = {
                 id: guildid,
-                name: bot.base.gld.name(guildid),
+                name: bot.base.gld.gname(guildid),
                 version: cfgVersion,
                 commands: [],
                 welcoming: {},
@@ -39,7 +39,7 @@ module.exports = {
                 counters: {},
                 stats: {
                     evolution: {
-                        membercount: [{ time: datetime, value: bot.base.gld.membercount(guildid) }],
+                        membercount: [{ time: datetime, value: bot.base.gld.gmembercount(guildid) }],
                         msgs: [{ time: datetime, value: 0 }],
                         reacts: [{ time: datetime, value: 0 }]
                     },

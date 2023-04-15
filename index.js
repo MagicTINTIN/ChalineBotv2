@@ -34,7 +34,9 @@ process.on('uncaughtException', function (err) {
 client.once('ready', () => {
     initialized = true;
     bot.init();
-    bot.log.all([debugmsg.init.startInitMsg, bot.importercount(bot), debugmsg.init.endInitMsg], true);
+    bot.log.ch(debugmsg.init.startInitMsg, true, "**");
+    bot.log.all(bot.importercount(bot), true)
+    bot.log.all(debugmsg.init.endInitMsg, true, "**")
 });
 
 client.on('debug', async info => {

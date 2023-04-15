@@ -1,3 +1,4 @@
+const { Guild } = require("discord.js");
 const { client } = require("../../index.js");
 
 module.exports = {
@@ -14,15 +15,36 @@ module.exports = {
         *
         * @param {string} guildid
         */
-    name: function (guildid) {
-        return this.getgldid(guildid).name;
+    gname: function (guildid) {
+        return this.get(guildid).name;
     },
     /**
         * Get guild member count by id
         *
         * @param {string} guildid
         */
-    membercount: function (guildid) {
-        return this.getgldid(guildid).memberCount;
+    gmembercount: function (guildid) {
+        return this.get(guildid).memberCount;
+    },
+
+
+    // classical way
+
+
+    /**
+        * Get guild name
+        *
+        * @param {Guild} guild
+        */
+    name: function (guild) {
+        return guild.name;
+    },
+    /**
+        * Get guild member count
+        *
+        * @param {Guild} guild
+        */
+    membercount: function (guild) {
+        return guild.memberCount;
     }
 };  
