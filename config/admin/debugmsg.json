@@ -4,6 +4,10 @@
         "startInitMsg":"▶️ | Starting Chaline...\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾",
         "endInitMsg":"___________________\n✅ | Chaline is ready"
     },
+    "stop":{
+        "durationmsg":"⏱️ | Stopping after working during ",
+        "exitingmsg":"🛑 | Stopping Chaline with code "
+    },
     "errors":{
         "debug":"⚙️ | ",
         "important":"❗ | ",

@@ -6,6 +6,7 @@ const base = {
     msg: require("./discord/elements/msg"),
     rct: require("./discord/elements/rct"),
     usr: require("./discord/elements/usr"),
+    clt: require("./discord/elements/clt"),
 }
 exports.base = base;
 
@@ -26,5 +27,6 @@ module.exports = {
     rdm: require("./tools/random"),
     alert: require("./tools/alert"),
     file: require("./tools/file"),
+    time: require("./tools/time"),
     init: require("./tools/init"),
 }

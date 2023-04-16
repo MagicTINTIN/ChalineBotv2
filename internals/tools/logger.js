@@ -8,14 +8,16 @@ module.exports = {
         * @param {string|string[]} tolog message to log
         * @param {boolean} blockcode to set message appears as a block code in discord (default: false)
         * @param {string} framechar Message will appear between these characters (default: "")
+        * @param {string} initialised If not initialised it wont send message in channel (default: true)
         */
-    all: function (tolog, blockcode = false, framechar = "") {
+    all: function (tolog, blockcode = false, framechar = "", initialised = true) {
         let strtolog = (typeof (tolog) == "string") ? tolog : tolog.join("\n");
         console.log(strtolog);
-        if (blockcode)
-            dscrd.message.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
-        else
-            dscrd.message.sendch(debugmsg.debugch, framechar + strtolog + framechar);
+        if (initialised)
+            if (blockcode)
+                dscrd.message.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
+            else
+                dscrd.message.sendch(debugmsg.debugch, framechar + strtolog + framechar);
     },
     /**
         * Create a log in channel

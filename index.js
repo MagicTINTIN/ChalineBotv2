@@ -1,3 +1,4 @@
+const startingts = Date.now();
 const debugmsg = require("./config/admin/debugmsg.json");
 console.log(debugmsg.init.startInitMsg);
 let initialized = false;
@@ -25,6 +26,12 @@ process.on('uncaughtException', function (err) {
     bot.alert.err(err, initialized);
 });
 
+// Prevents bot from crash
+process.on('SIGINT', function (code) {
+    console.log("yay");
+    bot.log.all(debugmsg.stop.durationmsg + bot.time.duration(startingts, Date.now()), true, "", initialized);
+    bot.log.all(debugmsg.stop.exitingmsg + code, true, "**", initialized);
+});
 
 
 // --- BOT EVENTS SECTION --- \\
@@ -35,6 +42,7 @@ client.once('ready', () => {
     bot.log.ch(debugmsg.init.startInitMsg, true, "**");
     bot.log.all(bot.importercount(bot), true);
     bot.init();
+    bot.log.all(bot.base.clt.lstsrv(), true);
     bot.log.all(debugmsg.init.endInitMsg, true, "**");
 });
 
