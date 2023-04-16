@@ -17,13 +17,12 @@ const client = new Client({
 exports.client = client;
 
 // Import librairies
-const alert = require("./internals/tools/alert")
 const bot = require("./internals");
 const { tests } = require("./internals");
 
 // Prevents bot from crash
 process.on('uncaughtException', function (err) {
-    alert.err(err, initialized);
+    bot.alert.err(err, initialized);
 });
 
 
@@ -34,22 +33,22 @@ process.on('uncaughtException', function (err) {
 client.once('ready', () => {
     initialized = true;
     bot.log.ch(debugmsg.init.startInitMsg, true, "**");
-    bot.log.all(bot.importercount(bot), true)
+    bot.log.all(bot.importercount(bot), true);
     bot.init();
-    bot.log.all(debugmsg.init.endInitMsg, true, "**")
+    bot.log.all(debugmsg.init.endInitMsg, true, "**");
 });
 
 client.on('debug', async info => {
     if (debugmode != 1)
-        alert.debug(info, initialized);
+        bot.alert.debug(info, initialized);
 });
 
 client.on('error', async error => {
-    alert.err(error, initialized);
+    bot.alert.err(error, initialized);
 });
 
 client.on('warn', async warning => {
-    alert.warn(warning, initialized);
+    bot.alert.warn(warning, initialized);
 });
 
 // triggered when bot joins a new server
@@ -75,6 +74,7 @@ client.on('guildUpdate', async (oldGuild, newGuild) => {
 client.on('messageCreate', message => {
     if (message.guild.id in cfg.mutedservers) return;
     tests.msg(message);
+    //bot.alert.warn("Nouveau message")
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
@@ -89,6 +89,11 @@ client.on('messageDelete', message => {
 
 client.on('messageDelete', message => {
     if (message.guild.id in cfg.mutedservers) return;
+    //not implemanted yet
+});
+
+client.on('messageReactionAdd', (messageReaction, user) => {
+    if (messageReaction.message.guild.id in cfg.mutedservers) return;
     //not implemanted yet
 });
 

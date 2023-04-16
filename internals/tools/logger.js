@@ -13,9 +13,9 @@ module.exports = {
         let strtolog = (typeof (tolog) == "string") ? tolog : tolog.join("\n");
         console.log(strtolog);
         if (blockcode)
-            dscrd.msg.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
+            dscrd.message.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
         else
-            dscrd.msg.sendch(debugmsg.debugch, framechar + strtolog + framechar);
+            dscrd.message.sendch(debugmsg.debugch, framechar + strtolog + framechar);
     },
     /**
         * Create a log in channel
@@ -27,8 +27,8 @@ module.exports = {
     ch: function (tolog, blockcode = false, framechar = "") {
         let strtolog = (typeof (tolog) == "string") ? tolog : tolog.join("\n");
         if (blockcode)
-            dscrd.msg.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
+            dscrd.message.sendch(debugmsg.debugch, framechar + "```\n" + strtolog + "\n```" + framechar);
         else
-            dscrd.msg.sendch(debugmsg.debugch, framechar + strtolog + framechar);
+            dscrd.message.sendch(debugmsg.debugch, framechar + strtolog + framechar);
     }
 }

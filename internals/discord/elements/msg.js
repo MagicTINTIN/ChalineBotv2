@@ -1,5 +1,5 @@
 const { Message } = require("discord.js");
-const { client } = require("../../index.js");
+const { client } = require("../../../index.js");
 
 module.exports = {
     /**

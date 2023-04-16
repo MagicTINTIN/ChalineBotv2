@@ -1,12 +1,18 @@
 const base = {
-    gld: require("./discord/gldelement"),
-    ch: require("./discord/chelement")
+    ch: require("./discord/elements/ch"),
+    gld: require("./discord/elements/gld"),
+    itr: require("./discord/elements/itr"),
+    mbr: require("./discord/elements/mbr"),
+    msg: require("./discord/elements/msg"),
+    rct: require("./discord/elements/rct"),
+    usr: require("./discord/elements/usr"),
 }
 exports.base = base;
 
 const dscrd = {
-    msg: require("./discord/msg"),
-    interaction: require("./discord/interactions")
+    message: require("./discord/message"),
+    interaction: require("./discord/interaction"),
+
 }
 exports.dscrd = dscrd;
 
