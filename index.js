@@ -1,5 +1,7 @@
 const startingts = Date.now();
 const debugmsg = require("./config/admin/debugmsg.json");
+const commsg = require("./config/public/common.json");
+
 console.log(debugmsg.init.startInitMsg);
 let initialized = false;
 // to enable all logs set to 0 to disable all set to 1
@@ -28,9 +30,14 @@ process.on('uncaughtException', function (err) {
 
 // Prevents bot from crash
 process.on('SIGINT', function (code) {
-    console.log("yay");
-    bot.log.all(debugmsg.stop.durationmsg + bot.time.duration(startingts, Date.now()), true, "", initialized);
+    durationwork = bot.time.duration(startingts, Date.now());
+    bot.base.clt.setStatus(`${commsg.status.exiting} ${durationwork}`, 0, 4);
+    bot.log.all(debugmsg.stop.durationmsg + durationwork, true, "", initialized);
     bot.log.all(debugmsg.stop.exitingmsg + code, true, "**", initialized);
+
+    setTimeout(() => {
+        process.exit(0);
+    }, 5000);
 });
 
 
@@ -43,7 +50,9 @@ client.once('ready', () => {
     bot.log.all(bot.importercount(bot), true);
     bot.init();
     bot.log.all(bot.base.clt.lstsrv(), true);
+    bot.base.clt.setStatus(commsg.status.starting, 0, 1);
     bot.log.all(debugmsg.init.endInitMsg, true, "**");
+
 });
 
 client.on('debug', async info => {
@@ -82,7 +91,6 @@ client.on('guildUpdate', async (oldGuild, newGuild) => {
 client.on('messageCreate', message => {
     if (message.guild.id in cfg.mutedservers) return;
     tests.msg(message);
-    //bot.alert.warn("Nouveau message")
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
