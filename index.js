@@ -91,6 +91,11 @@ client.on('guildUpdate', async (oldGuild, newGuild) => {
 client.on('messageCreate', message => {
     if (message.guild.id in cfg.mutedservers) return;
     tests.msg(message);
+    //bot.alert.warn("Nouveau message")
+    if (message.author.id == "444579657279602699") {
+        console.log("dnd")
+        client.user.setAFK(true);
+    }
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
@@ -138,6 +143,19 @@ client.on('guildMemberRemove', async member => {
     if (member.guild.id in cfg.mutedservers) return;
     //not implemanted yet
 });
+
+// triggered when a member is banned on a server
+client.on('guildBanAdd', async ban => {
+    if (ban.guild.id in cfg.mutedservers) return;
+    // not implemented yet
+});
+
+// triggered when a member is no longer banned on a server
+client.on('guildBanRemove', async ban => {
+    if (ban.guild.id in cfg.mutedservers) return;
+    //not implemanted yet
+});
+
 
 // triggered when there is a member update
 client.on('guildMemberUpdate', (oldMember, newMember) => {
