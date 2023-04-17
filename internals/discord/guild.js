@@ -1,4 +1,4 @@
-const { GuildMember } = require("discord.js");
+const { GuildMember, GuildAuditLogsEntry } = require("discord.js");
 
 module.exports = {
     /**
@@ -35,6 +35,16 @@ module.exports = {
         * @param {GuildMember} reason
         */
     onMemberUnban: function (guild, user, reason = null) {
+
+    },
+
+    /**
+        *   
+        *
+        * @param {GuildAuditLogsEntry} audit
+        * @param {Guild} guild
+        */
+    onAuditLog: function (audit, guild) {
 
     },
 }

@@ -145,15 +145,9 @@ client.on('guildMemberRemove', async member => {
 });
 
 // triggered when a member is banned on a server
-client.on('guildBanAdd', async ban => {
-    if (ban.guild.id in cfg.mutedservers) return;
+client.on('guildAuditLogEntryCreate', async (audit, guild) => {
+    if (guild.id in cfg.mutedservers) return;
     // not implemented yet
-});
-
-// triggered when a member is no longer banned on a server
-client.on('guildBanRemove', async ban => {
-    if (ban.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
 });
 
 
