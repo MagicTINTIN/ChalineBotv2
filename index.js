@@ -135,13 +135,13 @@ client.on('interactionCreate', interaction => {
 // triggered when a member join the server
 client.on('guildMemberAdd', async member => {
     if (member.guild.id in cfg.mutedservers) return;
-    // not implemented yet
+    bot.dscrd.guild.onMemberJoin(member);
 });
 
 // triggered when a member left the server
 client.on('guildMemberRemove', async member => {
     if (member.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
+    bot.dscrd.guild.onMemberLeave(member);
 });
 
 // triggered when a member is banned on a server
