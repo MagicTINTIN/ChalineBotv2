@@ -11,9 +11,10 @@ const base = {
 exports.base = base;
 
 const dscrd = {
-    message: require("./discord/message"),
+    guild: require("./discord/guild"),
     interaction: require("./discord/interaction"),
-
+    message: require("./discord/message"),
+    reaction: require("./discord/reaction"),
 }
 exports.dscrd = dscrd;
 

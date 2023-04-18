@@ -147,7 +147,7 @@ client.on('guildMemberRemove', async member => {
 // triggered when a member is banned on a server
 client.on('guildAuditLogEntryCreate', async (audit, guild) => {
     if (guild.id in cfg.mutedservers) return;
-    // not implemented yet
+    bot.dscrd.guild.onAuditLog(audit, guild);
 });
 
 
