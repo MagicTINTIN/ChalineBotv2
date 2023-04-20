@@ -1,5 +1,5 @@
 const { Message } = require("discord.js");
-const {base} = require("../index");
+const { base } = require("../index");
 
 module.exports = {
     /**
@@ -25,8 +25,12 @@ module.exports = {
         */
     bf: function (message) {
         if (message.content.startsWith("%bf")) {
-            let bfres = base.bf(message.content.slice(3));
-            message.reply("Executed in " + b + " steps :\n```brainfuck\n"+  + bfres.str + "\n [" + bfres.mem.join("|") + "]");
+            let splittedmsg = message.content.slice(3).split("$");
+            let bfres = base.bf.exe(splittedmsg[0], splittedmsg);
+            if (bfres.mem[bfres.posMem])
+                bfres.mem[bfres.posMem] = `**${bfres.mem[bfres.posMem]}**`;
+            message.reply((bfres.success ? "Successfully executed in " : `**Error** occurred at character **${bfres.posProg}** after `) + bfres.step + " steps :" + ((bfres.str.length > 0) ? "\n```brainfuck\n" + bfres.str + "```" : "") + "\n [" + bfres.mem.join("|") + "]\nMemory frame n°" + bfres.posMem);
+            console.log(bfres);
         }
     }
 }
