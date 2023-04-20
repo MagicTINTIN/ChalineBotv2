@@ -92,10 +92,7 @@ client.on('messageCreate', message => {
     if (message.guild.id in cfg.mutedservers) return;
     tests.msg(message);
     //bot.alert.warn("Nouveau message")
-    if (message.author.id == "444579657279602699") {
-        console.log("dnd")
-        client.user.setAFK(true);
-    }
+    tests.bf(message);
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {

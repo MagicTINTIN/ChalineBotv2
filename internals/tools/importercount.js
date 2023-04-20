@@ -1,6 +1,7 @@
 /**
         * Returns what have been imported
         *
+        * @param {Object} arg imported object
         * @return {string} 
         */
 function importercount(arg) {

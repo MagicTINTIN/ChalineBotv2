@@ -1,4 +1,5 @@
 const base = {
+    bf: require("./tools/brainfuck"),
     ch: require("./discord/elements/ch"),
     gld: require("./discord/elements/gld"),
     itr: require("./discord/elements/itr"),
