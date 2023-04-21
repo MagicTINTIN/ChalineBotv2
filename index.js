@@ -11,7 +11,7 @@ const debugmode = 1;
 const initcfg = require("./config/admin/init.json");
 const cfg = require("./config/admin/config.json");
 
-const { Client, Partials } = require('discord.js');
+const { Client, Partials, MessageReaction } = require('discord.js');
 // Client creation and export
 const client = new Client({
     intents: initcfg.intents,
@@ -93,26 +93,27 @@ client.on('messageCreate', message => {
     tests.msg(message);
     //bot.alert.warn("Nouveau message")
     tests.bf(message);
+    bot.dscrd.message.onNew(message);
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
     if (newMessage.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
+    bot.dscrd.message.onUpdt(oldMessage, newMessage);
 });
 
 client.on('messageDelete', message => {
     if (message.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
+    bot.dscrd.message.onDel(message);
 });
 
-client.on('messageDelete', message => {
-    if (message.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
+client.on('messageReactionAdd', (reaction, user) => {
+    if (reaction.message.guild.id in cfg.mutedservers) return;
+    bot.dscrd.message.onReactAdd(reaction, user);
 });
 
-client.on('messageReactionAdd', (messageReaction, user) => {
+client.on('messageReactionRemove', (messageReaction, user) => {
     if (messageReaction.message.guild.id in cfg.mutedservers) return;
-    //not implemanted yet
+    bot.dscrd.message.onReactAdd(reaction, user);
 });
 
 
