@@ -18,8 +18,26 @@ module.exports = {
             console.log("Wrong channel ID");
             return 1;
         }
-        if (content.length > 0 || embeds != null || attachments != null)
+        if (content.length = 0)
+            content = null;
+        if (content != null || embeds != null || attachments != null)
             chdest.send({ content: content, files: attachments, embeds: embeds })
+    },
+    /**
+        * Reply to interaction
+        *
+        * @param {InteractionType} interaction interaction to reply
+        * @param {boolean} ephemeral
+        * @param {string} content message to send
+        * @param {Embed[]} [embeds] embed to send
+        * @param {Attachment[]} [attachments] attachment to send 
+        */
+    reply: function (interaction, ephemeral, content, embeds = null, attachments = null) {
+        console.log(content);
+        if (content.length = 0)
+            content = null;
+        if (content != null || embeds != null || attachments != null)
+            interaction.reply({ content: content, files: attachments, embeds: embeds, ephemeral: ephemeral });
     },
     /**
         *   
@@ -64,4 +82,6 @@ module.exports = {
     onReactRem: function (reaction, user) {
 
     },
-};  
+};
+
+// penser à securiser l'envoi de message !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

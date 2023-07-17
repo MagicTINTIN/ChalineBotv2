@@ -21,7 +21,7 @@ module.exports = {
         try { // Loading previous if it exists
             var previousfile = JSON.parse(fs.readFileSync(path.resolve(`./config/servers/${guildid}.json`)));
             if (!muted) bot.log.all(debugmsg.tools.file.caching + " guildCfg : " + guildid)
-            client.glddata.get(guildid) = previousfile;
+            client.glddata.set(guildid, previousfile);
             return previousfile;
         } catch (err) {
             if (!muted) bot.log.all(debugmsg.tools.file.nofile + " guildCfg : " + guildid);
@@ -72,10 +72,10 @@ module.exports = {
         * @param {boolean} muted to mute saving messages (default = false)
         */
     svGldCfg: function (guildid, jsondata, muted = false) {
-        client.glddata.get(guildid) = jsondata;
+        client.glddata.set(guildid, jsondata);
         // export new file
         const jsonStringcfg = JSON.stringify(jsondata);
-        fs.writeFile(`./servers/${guild.id}.json`, jsonStringcfg, err => {
+        fs.writeFile(`./servers/${guildid}.json`, jsonStringcfg, err => {
             if (err) {
                 if (!muted) {
                     bot.log.all(debugmsg.tools.file.errsaving + guildid);
