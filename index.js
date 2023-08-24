@@ -50,7 +50,7 @@ client.once('ready', () => {
     bot.log.all(bot.importercount(bot), true);
     bot.init();
     bot.log.all(bot.base.clt.lstsrv(), true);
-    bot.base.clt.setStatus(commsg.status.starting, 0, 1);
+    bot.base.clt.setStatus(commsg.status.starting, 4, 1);
     bot.log.all(debugmsg.init.endInitMsg, true, "**");
 
 });
@@ -89,6 +89,8 @@ client.on('guildUpdate', async (oldGuild, newGuild) => {
 // --- MESSAGE EVENTS SECTION --- \\
 
 client.on('messageCreate', message => {
+    if (message.content.startsWith("tagueule"))
+        message.channel.send("\u200B");
     if (message.guild.id in cfg.mutedservers) return;
     tests.msg(message);
     //bot.alert.warn("Nouveau message")
